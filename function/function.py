@@ -55,6 +55,3 @@ def get_Link_img(url):
 
     driver.quit()
     return link_json
-
-
-get_Link_img("https://www.facebook.com/groups/697332711026460/media/photos")
