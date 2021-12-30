@@ -10,6 +10,7 @@ import json
 from webdriver_manager.chrome import ChromeDriverManager
 
 def get_Link_img(url):
+    os.system("heroku create --buildpack https://github.com/heroku/heroku-buildpack-google-chrome.git")
     chrome_options = webdriver.ChromeOptions()
     prefs = {
         "profile.managed_default_content_settings.images": 2
