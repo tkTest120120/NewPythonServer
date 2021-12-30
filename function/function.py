@@ -10,15 +10,23 @@ import json
 from webdriver_manager.chrome import ChromeDriverManager
 
 def get_Link_img(url):
-    chrome_options = webdriver.ChromeOptions()
-    prefs = {
-        "profile.managed_default_content_settings.images": 2
-    }
-    chrome_options.add_experimental_option("prefs", prefs)
+    import os
+    from selenium import webdriver
+    op = webdriver.ChromeOptions()
+    op.binary_location = os.environ.get("GOOGLE CHROME_BIN")
+    op.add_argument("--headless")
+    op.add_argument("--no-sandbox")
+    op.add_argument("--disable-dev-sh-usage")
+    driver = webdriver.Chrome(executable_path = os.environ.get("CHROMEDRIVER_PATH"), chrome_options = op)
+    # chrome_options = webdriver.ChromeOptions()
+    # prefs = {
+    #     "profile.managed_default_content_settings.images": 2
+    # }
+    # chrome_options.add_experimental_option("prefs", prefs)
 
     # driver = webdriver.Chrome('./chromedriver')
     # driver = webdriver.Chrome('./chromedriver', options=chrome_options)
-    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
+    # driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
 
     # url = "https://www.facebook.com/groups/697332711026460/media/photos"
 
