@@ -1,4 +1,5 @@
 # pip freeze > requirements.txt export library to file txt
+# https://www.youtube.com/watch?v=rfdNIOYGYVI
 from flask import Flask, render_template
 from function.function import get_Link_img
 
@@ -13,7 +14,7 @@ def home():
 
 @app.route("/salvador")
 def salvador():
-    return "Hello, Salvador"
+    return render_template('index.html')
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
