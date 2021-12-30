@@ -7,10 +7,10 @@ import json
 # from selenium.webdriver.common.by import By
 # from selenium.webdriver.support.ui import WebDriverWait
 # from selenium.webdriver.support import expected_conditions as ec
-from webdriver_manager.chrome import ChromeDriverManager
+# from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
 
 def get_Link_img(url):
-    os.system("heroku create --buildpack https://github.com/heroku/heroku-buildpack-google-chrome.git")
     chrome_options = webdriver.ChromeOptions()
     prefs = {
         "profile.managed_default_content_settings.images": 2
@@ -19,7 +19,8 @@ def get_Link_img(url):
 
     # driver = webdriver.Chrome('./chromedriver')
     # driver = webdriver.Chrome('./chromedriver', options=chrome_options)
-    driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
+    # driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
+    driver = webdriver.firefox(executable_path=GeckoDriverManager().install(), options=chrome_options)
 
     # url = "https://www.facebook.com/groups/697332711026460/media/photos"
 
