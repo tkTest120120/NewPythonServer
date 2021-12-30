@@ -32,7 +32,13 @@ def get_Link_img(url):
     # url = "https://www.facebook.com/groups/697332711026460/media/photos"
 
     driver.get(url)
+
     sleep(2)
+    driver.execute_script("window.scroll(0 , 10000)")
+    sleep(3)
+    driver.execute_script("window.scroll(0 , 10000)")
+    sleep(3)
+
     html = driver.page_source
 
     # html = requests.get(url).text
