@@ -2,7 +2,7 @@ from time import sleep
 import os
 from selenium import webdriver
 from bs4 import BeautifulSoup
-import requests
+# import requests
 import json
 # from selenium.webdriver.common.by import By
 # from selenium.webdriver.support.ui import WebDriverWait
