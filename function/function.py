@@ -36,4 +36,4 @@ for link in soup.find_all('img'):
 # print(soup)
 print(f'sum :  {sum}')
 
-# driver.quit()
+driver.quit()
