@@ -141,5 +141,6 @@ def get_Link():
 
     mydb.commit()
     mydb.close()
+    print(f"Hiện có : {len(cusror)} link ảnh nhé !")
     print("ok ok ok")
     return list_link
