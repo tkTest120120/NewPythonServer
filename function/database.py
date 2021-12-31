@@ -97,7 +97,6 @@ def insert_or_Update_Link(id , link):
     mydb.commit()
     mydb.close()
     print("ok ok ok")
-insert_or_Update_Link(1 , "https://mondaycareer.com/wp-content/uploads/2020/11/background-%C4%91%E1%BA%B9p-3-1.jpg")
 
 def delete_Link():
 
