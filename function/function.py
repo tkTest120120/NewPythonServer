@@ -30,7 +30,7 @@ def get_Link_img(url):
         driver.get(url)
 
         sleep(2)
-        for i in range(8):
+        for i in range(6):
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight + 10000)")
             sleep(2)
 
