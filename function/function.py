@@ -8,55 +8,49 @@ import json
 # from selenium.webdriver.support.ui import WebDriverWait
 # from selenium.webdriver.support import expected_conditions as ec
 from webdriver_manager.chrome import ChromeDriverManager
+import function.database as db
+import datetime
+
+time = datetime.datetime.now()
 
 def get_Link_img(url):
-    op = webdriver.ChromeOptions()
-    op.binary_location = os.environ.get("GOOGLE CHROME_BIN")
-    op.add_argument("--headless")
-    op.add_argument("--no-sandbox")
-    op.add_argument("--disable-dev-sh-usage")
-    driver = webdriver.Chrome(executable_path = os.environ.get("CHROMEDRIVER_PATH"), chrome_options = op)
 
+    if int(db.getTime(1)) == time.day:
+        return json.dumps( db.get_Link() )
+    else:
+        op = webdriver.ChromeOptions()
+        op.binary_location = os.environ.get("GOOGLE CHROME_BIN")
+        op.add_argument("--headless")
+        op.add_argument("--no-sandbox")
+        op.add_argument("--disable-dev-sh-usage")
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op)
 
+        driver.get(url)
 
-    # chrome_options = webdriver.ChromeOptions()
-    # prefs = {
-    #     "profile.managed_default_content_settings.images": 2
-    # }
-    # chrome_options.add_experimental_option("prefs", prefs)
-
-    # driver = webdriver.Chrome('./chromedriver')
-    # driver = webdriver.Chrome('./chromedriver', options=chrome_options)
-    # driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
-
-    # url = "https://www.facebook.com/groups/697332711026460/media/photos"
-
-    driver.get(url)
-
-    sleep(2)
-    for i in range(5):
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight + 10000)")
         sleep(2)
+        for i in range(8):
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight + 10000)")
+            sleep(2)
 
-    html = driver.page_source
+        html = driver.page_source
 
-    # html = requests.get(url).text
+        # html = requests.get(url).text
 
-    soup = BeautifulSoup(html, 'html.parser')
+        soup = BeautifulSoup(html, 'html.parser')
 
-    sum = 0
-    link_list = []
+        sum = 0
+        link_list = []
 
-    for link in soup.find_all('img'):
-        link = link.get('src')
-        # print(link)
-        sum += 1
-        link_list.append(link)
+        for link in soup.find_all('img'):
+            link = link.get('src')
+            # print(link)
+            sum += 1
+            link_list.append(link)
 
-    # print(soup)
-    print(f'sum :  {sum} link ảnh')
-    link_json = json.dumps(link_list)
-    # print(link_json)
+        # print(soup)
+        print(f'sum :  {sum} link ảnh')
+        link_json = json.dumps(link_list)
+        # print(link_json)
 
-    driver.quit()
-    return link_json
+        driver.quit()
+        return link_json
