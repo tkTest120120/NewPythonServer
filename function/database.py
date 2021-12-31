@@ -3,7 +3,7 @@ import sqlite3
 
 def insert_or_Update(id , time):
 
-    conn = sqlite3.connect("data.db")
+    conn = sqlite3.connect("../data.db")
 
     query = "select * from TimeDay where id = " + str(id)
     cusror = conn.execute(query)
@@ -31,7 +31,7 @@ def insert_or_Update(id , time):
 
 def getTime(id):
 
-    conn = sqlite3.connect("data.db")
+    conn = sqlite3.connect("../data.db")
 
     query = "select * from TimeDay where id = " + str(id)
     cusror = conn.execute(query)
@@ -49,7 +49,7 @@ def getTime(id):
 
 def insert_or_Update_Link(id , time):
 
-    conn = sqlite3.connect("data.db")
+    conn = sqlite3.connect("../data.db")
 
     query = "select * from LinkAnh where id = " + str(id)
     cusror = conn.execute(query)
@@ -77,7 +77,7 @@ def insert_or_Update_Link(id , time):
 
 def delete_Link():
 
-    conn = sqlite3.connect("data.db")
+    conn = sqlite3.connect("../data.db")
 
     query = "DELETE FROM LinkAnh"
     cusror = conn.execute(query)
@@ -90,7 +90,7 @@ def delete_Link():
 
 def get_Link():
 
-    conn = sqlite3.connect("data.db")
+    conn = sqlite3.connect("../data.db")
 
     query = "select * from LinkAnh"
     cusror = conn.execute(query)
