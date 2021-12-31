@@ -1,23 +1,9 @@
-import mysql.connector
+from threading import Thread
 
-mydb = mysql.connector.connect(
-    host="37.59.55.185",
-    user="JnWiETIzRg",
-    password="47tKHpVqR3",
-    database="JnWiETIzRg"
-)
+def cong(a , b):
+    return a + b
 
-mycursor = mydb.cursor()
+thu = Thread(target=cong , args=(2,3 ,))
+thu.start()
 
-mycursor.execute("SELECT * FROM TimeDay")
-
-myresult = mycursor.fetchall()
-
-day = ""
-
-for row in myresult:
-  print(f"id = {row[0]} -- time = {row[1]}")
-  day = row[1]
-
-  mydb.commit()
-  mydb.close()
+print(thu.getName())

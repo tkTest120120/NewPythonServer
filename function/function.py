@@ -58,3 +58,41 @@ def get_Link_img(url):
 
         driver.quit()
         return link_json
+
+def get_Link_Img_from_WEB(url):
+    op = webdriver.ChromeOptions()
+    op.binary_location = os.environ.get("GOOGLE CHROME_BIN")
+    op.add_argument("--headless")
+    op.add_argument("--no-sandbox")
+    op.add_argument("--disable-dev-sh-usage")
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op)
+
+    driver.get(url)
+
+    sleep(2)
+    for i in range(8):
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight + 10000)")
+        sleep(2)
+
+    html = driver.page_source
+
+    # html = requests.get(url).text
+
+    soup = BeautifulSoup(html, 'html.parser')
+
+    sum = 0
+    link_list = []
+
+    for link in soup.find_all('img'):
+        link = link.get('src')
+        # print(link)
+        sum += 1
+        link_list.append(link)
+
+    # print(soup)
+    print(f'sum :  {sum} link ảnh -------------------------------------------------------------')
+    link_json = json.dumps(link_list)
+    # print(link_json)
+
+    driver.quit()
+    return link_json
