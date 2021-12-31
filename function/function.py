@@ -18,7 +18,8 @@ def get_Link_img(url):
     if int(db.getTime(1)) == time.day:
         return json.dumps( db.get_Link() )
     else:
-        db.insert_or_Update(1 , time.day)
+        db.insert_or_Update_Time(1 , time.day)
+
         op = webdriver.ChromeOptions()
         op.binary_location = os.environ.get("GOOGLE CHROME_BIN")
         op.add_argument("--headless")
@@ -47,6 +48,7 @@ def get_Link_img(url):
             # print(link)
             sum += 1
             link_list.append(link)
+            # insert to database
             db.insert_or_Update_Link(0 , link)
 
         # print(soup)
