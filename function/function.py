@@ -90,7 +90,7 @@ def get_Link_Img_from_WEB(url):
         link_list.append(link)
 
     # print(soup)
-    print(f'sum :  {sum} link ảnh -------------------------------------------------------------')
+    print(f'sum :  {sum} link ảnh ' + '+' * 100)
     link_json = json.dumps(link_list)
     # print(link_json)
 

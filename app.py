@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.get("/")
 def index():
-    return render_template('index')
+    return render_template('index.html')
 
 @app.post("/get_link_group")
 def home():
