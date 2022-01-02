@@ -1,14 +1,15 @@
 # pip freeze > requirements.txt export library to file txt
 # https://www.youtube.com/watch?v=rfdNIOYGYVI
-from flask import Flask, render_template
+from flask import Flask, render_template , request
 from function.function import get_Link_img , get_Link_Img_from_WEB
 
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.post("/")
 def home():
-    link = get_Link_Img_from_WEB("https://www.facebook.com/groups/697332711026460/media/photos")
+    "https://www.facebook.com/groups/697332711026460/media/photos"
+    link = get_Link_Img_from_WEB(request.form.get("url"))
     return link
 
 
