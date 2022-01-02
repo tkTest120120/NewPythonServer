@@ -5,8 +5,11 @@ from function.function import get_Link_img , get_Link_Img_from_WEB
 
 app = Flask(__name__)
 
+@app.get("/")
+def index():
+    return render_template('index')
 
-@app.post("/")
+@app.post("/get_link_group")
 def home():
     "https://www.facebook.com/groups/697332711026460/media/photos"
     link = get_Link_Img_from_WEB(request.form.get("url"))
