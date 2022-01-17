@@ -72,7 +72,7 @@ def get_Link_Img_from_WEB(url):
 
     sleep(2)
     for i in range(10):
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight + 10000)")
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight + 20000)")
         sleep(1)
 
     html = driver.page_source
