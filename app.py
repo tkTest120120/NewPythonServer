@@ -23,8 +23,7 @@ def salvador():
 
 @app.post("/upload")
 def upload_img():
-    print(f"\n\n {request.files['pic']} \n\n")
-    return "upload image successfully !"
+    return f"upload image successfully ! \n\n{request.files['pic']}"
 
 # if __name__ == '__main__':
 #     app.run(debug=True)
