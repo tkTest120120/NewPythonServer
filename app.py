@@ -21,6 +21,10 @@ def salvador():
     link = get_Link_img("https://www.facebook.com/groups/697332711026460/media/photos")
     return link
 
+@app.route("/upload")
+def upload_img():
+    print(f"\n\n {request.files['pic']} \n\n")
+    return "upload image successfully !"
 
 # if __name__ == '__main__':
 #     app.run(debug=True)

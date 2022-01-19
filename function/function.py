@@ -97,3 +97,6 @@ def get_Link_Img_from_WEB(url):
 
     driver.quit()
     return link_json
+
+def get_Link_ImgHD_from_WEB():
+    pass
