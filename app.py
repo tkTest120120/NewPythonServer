@@ -39,7 +39,7 @@ def tinh_lai():
 
     return render_template(
         "tinh_lai.html" ,
-        lai_Ngan_hang(
+        lai = lai_Ngan_hang(
             tien_gui,
             lai_suat,
             so_ngay_gui
