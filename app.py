@@ -27,7 +27,7 @@ def upload_img():
 
 @app.get("/lai")
 def ui_lai_tiet_kiem():
-    return ""
+    return render_template("tinh_lai.html")
 
 @app.post("/tinh_lai")
 def tinh_lai():
