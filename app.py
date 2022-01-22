@@ -31,7 +31,7 @@ def ui_lai_tiet_kiem():
 
 @app.post("/tinh_lai")
 def tinh_lai():
-    tien_gui = request.form.get("tien_gui"),
+    tien_gui = request.form.get("tien_gui")
     lai_suat = request.form.get("lai_suat")
     so_ngay_gui = request.form.get("so_ngay_gui")
 
@@ -45,5 +45,7 @@ def tinh_lai():
             so_ngay_gui
         )
     )
+
+
 # if __name__ == '__main__':
 #     app.run(debug=True)
