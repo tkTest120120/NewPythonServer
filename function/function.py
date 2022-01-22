@@ -100,3 +100,24 @@ def get_Link_Img_from_WEB(url):
 
 def get_Link_ImgHD_from_WEB():
     pass
+
+def lai_Ngan_hang(tien_gui = 0 , lai_suat = 0 , so_Ngay_Gui = 0):
+    soTienGui = int(tien_gui)
+    # print(soTienGui)
+
+    laiSuat_Nam = float(lai_suat)
+    laiSuat = laiSuat_Nam / 100
+    # print(laiSuat_Nam)
+    # print(laiSuat)
+
+    soNgayGui = int(so_Ngay_Gui)
+    # print(soNgayGui)
+
+    tienLai = ((soTienGui * laiSuat) / 365) * soNgayGui
+    print()
+    print("Tiền lãi của bạn là: ", float(tienLai), end=" ")
+    print("VND")
+    print("Tiền lãi của bạn sau khi làm tròn là: ", int(tienLai), end=" ")
+    print("VND \n")
+    print()
+    return f"Tiền lãi của bạn là :  {int(tienLai)} VNĐ"

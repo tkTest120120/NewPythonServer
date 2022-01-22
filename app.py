@@ -1,7 +1,7 @@
 # pip freeze > requirements.txt export library to file txt
 # https://www.youtube.com/watch?v=rfdNIOYGYVI
 from flask import Flask, render_template , request
-from function.function import get_Link_img , get_Link_Img_from_WEB
+from function.function import get_Link_img , get_Link_Img_from_WEB , lai_Ngan_hang
 
 app = Flask(__name__)
 
@@ -25,5 +25,12 @@ def salvador():
 def upload_img():
     return f"upload image successfully ! \n\n{request.files['pic']}"
 
+@app.get("/lai")
+def ui_lai_tiet_kiem():
+    return ""
+
+@app.post("/tinh_lai")
+def tinh_lai():
+    return render_template("tinh_lai.html")
 # if __name__ == '__main__':
 #     app.run(debug=True)
