@@ -16,14 +16,20 @@
 <body>
     <form action="/tinh_lai" method="post">
         <label for=""> Tiền gửi </label>
-        <input type="number" name="tien_gui" > <br>
+        <input type="number" name="tien_gui"> <br>
         <label for=""> Lãi suất </label>
-        <input type="number" name="lai_suat" step="any" > <br>
+        <input type="number" name="lai_suat" step="any"> <br>
         <label for=""> Số ngày gửi </label>
         <input type="number" name="so_ngay_gui"> <br>
 
         <button type="submit"> Tính Lãi </button>
     </form>
+
+    <div>
+        {% if lai %}
+            <h3> {{ lai }} </h3>
+        {% endif %}
+    </div>
 </body>
 
 </html>

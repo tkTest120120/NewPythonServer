@@ -31,6 +31,19 @@ def ui_lai_tiet_kiem():
 
 @app.post("/tinh_lai")
 def tinh_lai():
-    return render_template("tinh_lai.html")
+    tien_gui = request.form.get("tien_gui"),
+    lai_suat = request.form.get("lai_suat")
+    so_ngay_gui = request.form.get("so_ngay_gui")
+
+    print(tien_gui , lai_suat , so_ngay_gui)
+
+    return render_template(
+        "tinh_lai.html" ,
+        lai_Ngan_hang(
+            tien_gui,
+            lai_suat,
+            so_ngay_gui
+        )
+    )
 # if __name__ == '__main__':
 #     app.run(debug=True)
