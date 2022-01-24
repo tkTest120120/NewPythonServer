@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title> Python App </title>
-</head>
-<body>
-    <h1> Đây là Server Tool cho App Mobile </h1>    
-</body>
-</html>
+{% extends './base.html' %}
+
+
+{% block header_py %}
+        <style>
+            h1{
+                color: red;
+                border: 5px solid greenyellow;
+            }
+        </style>
+{% endblock header_py %}
+
+{% block content %}
+    <h1> Đây là Server Tool cho App Mobile </h1>
+    <h2> Mong được mọi người ủng hộ ! ... </h2>
+{% endblock content %}
