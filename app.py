@@ -56,7 +56,7 @@ def get_tag_youtube():
     youtube_tag = ""
     for i in str(request.form.get("tag_text")).replace("\r" , "").split("\n"):
         youtube_tag += i + ",\n"
-    #
+
     return render_template("test.html" , youtube_tag = youtube_tag)
 
 # if __name__ == '__main__':
