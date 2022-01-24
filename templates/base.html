@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Document</title>
+    {% endif %}
+
+    <!-- Global site tag (gtag.js) - Google Analytics  ok -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CT8EPP21VF"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CT8EPP21VF');
+    </script>
+
+    {% block header_py %}
+
+    {% endblock header_py %}
+
+</head>
+
+<body>
+
+    <div>
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+</body>
+
+</html>
