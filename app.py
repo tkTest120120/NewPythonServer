@@ -3,7 +3,7 @@
 from flask import Flask, render_template , request
 from function.function import get_Link_img , get_Link_Img_from_WEB , lai_Ngan_hang
 
-app = Flask(__name__)
+app = Flask(__name__ , static_folder="./web")
 
 @app.get("/")
 def index():

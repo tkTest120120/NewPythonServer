@@ -121,3 +121,28 @@ def lai_Ngan_hang(tien_gui = 0 , lai_suat = 0 , so_Ngay_Gui = 0):
     print("VND \n")
     print()
     return f"Tiền lãi của bạn là :  {int(tienLai)} VNĐ"
+
+from gtts import gTTS
+# import playsound
+import os
+
+def speak(text):
+    fileName = "../web/sound.mp3"
+    # print("Trợ Lý ảo:  ", text)
+
+    # engine = pyttsx3.init()
+    # voices = engine.getProperty('voices')
+    # rate = engine.getProperty('rate')
+    # volume = engine.getProperty('volume')
+    # engine.setProperty('volume', volume - 0.0)  # tu 0.0 -> 1.0
+    # engine.setProperty('rate', rate - 50)
+    # engine.setProperty('voice', voices[1].id)
+    # engine.say(text)
+    # engine.runAndWait()
+
+
+    tts = gTTS(text=text, lang="vi", slow=False)
+    tts.save(fileName)
+    # playsound.playsound("sound.mp3", True)
+    # os.remove("sound.mp3")
+    print("\n\nxong")
