@@ -8,7 +8,6 @@ import json
 # from selenium.webdriver.support.ui import WebDriverWait
 # from selenium.webdriver.support import expected_conditions as ec
 from webdriver_manager.chrome import ChromeDriverManager
-import function.database as db
 import datetime
 
 time = datetime.datetime.now()
@@ -127,7 +126,7 @@ from gtts import gTTS
 import os
 
 def speak(text):
-    fileName = "../web/sound.mp3"
+    fileName = "../private/sound.mp3"
     # print("Trợ Lý ảo:  ", text)
 
     # engine = pyttsx3.init()
