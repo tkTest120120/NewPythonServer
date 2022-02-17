@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        form {
+            width: 20%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            margin-top: 40px;
+        }
+
+        form>textarea {
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin: 20px;
+            font-size: 18px;
+        }
+
+        div{
+            width: 35%;
+            margin: 0 auto;
+        }
+    </style>
+
+</head>
+
+<body>
+    <form action="/tag_youtube" method="post">
+        <textarea name="tag_text" rows="8" , cols="60">  </textarea>
+        <button type="submit"> Send </button>
+    </form>
+
+    <br>
+
+    <div>
+        {% if youtube_tag %}
+            <!-- <p> {{ youtube_tag }} </p> -->
+            <textarea rows="30" , cols="60" style="margin: 0 20px;" > {{ youtube_tag }} </textarea>
+        {% endif %}
+    </div>
+</body>
+
+</html>

@@ -8,7 +8,9 @@ import json
 # from selenium.webdriver.support.ui import WebDriverWait
 # from selenium.webdriver.support import expected_conditions as ec
 from webdriver_manager.chrome import ChromeDriverManager
+from functions import APIdatabase as db
 import datetime
+from flask import send_file
 
 time = datetime.datetime.now()
 
@@ -126,7 +128,9 @@ from gtts import gTTS
 import os
 
 def speak(text):
-    fileName = "../private/sound.mp3"
+    path = str(os.getcwd())
+    fileName = path + r"\private\sound.mp3"
+    # print(fileName)
     # print("Trợ Lý ảo:  ", text)
 
     # engine = pyttsx3.init()
@@ -145,3 +149,4 @@ def speak(text):
     # playsound.playsound("sound.mp3", True)
     # os.remove("sound.mp3")
     print("\n\nxong")
+    return send_file(fileName)

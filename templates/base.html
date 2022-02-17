@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% if title %}
-    <title>{{ title }}</title>
+        <title>{{ title }}</title>
     {% else %}
-    <title>Document</title>
+        <title> Document </title>
     {% endif %}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -30,11 +30,9 @@
 
 <body>
 
-    <div>
-        {% block content %}
+    {% block content %}
 
-        {% endblock content %}
-    </div>
+    {% endblock content %}
 
 </body>
 

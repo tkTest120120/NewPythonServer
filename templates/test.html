@@ -8,50 +8,92 @@
     <title>Document</title>
 
     <style>
-        body {
-            width: 100%;
-            margin: 0 auto;
+
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            transition: opacity 500ms;
+            visibility: hidden;
+            opacity: 0;
         }
 
-        form {
-            width: 20%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            margin-top: 40px;
+        /* .overlay:target {
+            visibility: visible;
+            opacity: 1;
+        } */
+
+        .popup {
+            margin: 70px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 5px;
+            width: 30%;
+            position: relative;
+            transition: all 5s ease-in-out;
         }
 
-        form>textarea {
-            margin-bottom: 20px;
+        .popup h2 {
+            margin-top: 0;
+            color: #333;
+            font-family: Tahoma, Arial, sans-serif;
         }
 
-        p {
-            margin: 20px;
-            font-size: 18px;
+        .popup .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            transition: all 200ms;
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #333;
         }
 
-        div{
-            width: 35%;
-            margin: 0 auto;
+        .popup .close:hover {
+            color: #06D85F;
+        }
+
+        .popup .content {
+            max-height: 30%;
+            overflow: auto;
+        }
+
+        @media screen and (max-width: 700px) {
+            .box {
+                width: 70%;
+            }
+
+            .popup {
+                width: 70%;
+            }
         }
     </style>
-
 </head>
 
 <body>
-    <form action="/tag_youtube" method="post">
-        <textarea name="tag_text" rows="8" , cols="60">  </textarea>
-        <button type="submit"> Send </button>
-    </form>
 
-    <br>
 
-    <div>
-        {% if youtube_tag %}
-            <!-- <p> {{ youtube_tag }} </p> -->
-            <textarea rows="30" , cols="60" style="margin: 0 20px;" > {{ youtube_tag }} </textarea>
-        {% endif %}
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>Here i am</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+                Thank to pop me out of that button, but now i'm done so you can close this window.
+            </div>
+        </div>
     </div>
+
+    <script>
+        const a = document.querySelector(".overlay");
+        a.style.visibility = 'visible';
+        a.style.opacity = '1';
+        console.log("asjdkjaslds"); 
+    </script>
 </body>
 
 </html>
