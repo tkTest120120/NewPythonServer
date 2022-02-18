@@ -10,7 +10,6 @@ import json
 from webdriver_manager.chrome import ChromeDriverManager
 from functions import APIdatabase as db
 import datetime
-from flask import send_file
 
 time = datetime.datetime.now()
 
@@ -149,4 +148,3 @@ def speak(text):
     # playsound.playsound("sound.mp3", True)
     # os.remove("sound.mp3")
     print("\n\nxong")
-    return send_file(fileName)

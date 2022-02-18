@@ -3,7 +3,9 @@
 from flask import Flask, render_template , request , send_file
 from flask import redirect , url_for
 from time import sleep
+import os
 from functions.function import get_Link_img , get_Link_Img_from_WEB , lai_Ngan_hang , speak
+from functions.token_jwt import decode_verify_TOKEN
 
 app = Flask(__name__ , static_folder="./web")
 
@@ -53,7 +55,7 @@ def tinh_lai():
 ''' Tag trong youtube '''
 @app.get("/tag_youtube")
 def input_tag():
-    return render_template("test.html")
+    return render_template("youtube_tag.html")
 
 @app.post("/tag_youtube")
 def get_tag_youtube():
@@ -70,14 +72,39 @@ def get_Input_TTS():
 
 @app.post("/api/tts")
 def get_TTS_token():
-    print(request.form.get("token"))
-    print(request.form.get("content"))
+    # token_TTS = request.form.get("token")
+    token_TTS = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTY0NTExNzY1MiwiZXhwIjoxNjQ1MDkyNTEyLCJ1c2VyX2lkIjoiYWJjIiwiZW1haWwiOiJuYW5jeUBnbWFpbC5jb20ifQ.CC9iUS3FG-Ot5bM2PppAr5EUg-aFfThq77C6RatXi9M"
+
+    with open(os.getcwd() + "/private/token.txt" , "w+") as f :
+        f.write(token_TTS)
+        f.close()
+
+    text = request.form.get("content")
+    # print(text)
+    speak(text)
     return redirect("/api/tts")
 
 @app.get("/api/tts")
 def get_TTS_MP3():
-    return speak("Như thế này liệu có bán được API không nhỉ")
+    token_TTS = ""
+
+    with open(os.getcwd() + "//private/token.txt" , "r") as f :
+        token_TTS = f.read()
+        f.close()
+    # print(f"token_TTS : {token_TTS}")
+
+    decode_Token = decode_verify_TOKEN(token_TTS)
+
+    if decode_Token == "Token đã hết hạn rồi":
+        return decode_Token
+    elif decode_Token == "Token không hợp lệ":
+        return decode_Token
+    elif decode_Token == "Token ok" :
+        print(f"decode_Token : {decode_Token}")
+        path = str(os.getcwd())
+        fileName = path + "/private/sound.mp3"
+        return send_file(fileName)
 
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
