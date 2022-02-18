@@ -73,7 +73,7 @@ def get_Input_TTS():
 @app.post("/api/tts")
 def get_TTS_token():
     # token_TTS = request.form.get("token")
-    token_TTS = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTY0NTExNzY1MiwiZXhwIjoxNjQ1MDkyNTEyLCJ1c2VyX2lkIjoiYWJjIiwiZW1haWwiOiJuYW5jeUBnbWFpbC5jb20ifQ.CC9iUS3FG-Ot5bM2PppAr5EUg-aFfThq77C6RatXi9M"
+    token_TTS = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTY0NTE5NjgxMywiZXhwIjoxNjQ1MzQ0NDEzLCJ1c2VyX2lkIjoiYWJjIiwiZW1haWwiOiJuYW5jeUBnbWFpbC5jb20ifQ.pMto1n-XbgFTZ5Fvk5hVSOkN-N4ijBxugn5FcxN0an8"
 
     with open(os.getcwd() + "/private/token.txt" , "w+") as f :
         f.write(token_TTS)
