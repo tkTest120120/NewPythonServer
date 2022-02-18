@@ -5,13 +5,13 @@ from functions import function
 
 secret_key = 'your-256-bit-secret'
 
-def create_TOKEN(nguoi_tao , thoi_han):
-    dt = datetime.now(tz=timezone.utc) + timedelta(days=2)
-    encoded_token = jwt.encode(
-        {"iss": nguoi_tao, "iat": datetime.now(), 'exp': dt, 'user_id': "abc", 'email': "nancy@gmail.com"},
-        secret_key, algorithm='HS256')
-    return encoded_token
-a = create_TOKEN("admin" , 1)
+# def create_TOKEN(nguoi_tao , thoi_han):
+#     dt = datetime.now(tz=timezone.utc) + timedelta(days=2)
+#     encoded_token = jwt.encode(
+#         {"iss": nguoi_tao, "iat": datetime.now(), 'exp': dt, 'user_id': "abc", 'email': "nancy@gmail.com"},
+#         secret_key, algorithm='HS256')
+#     return encoded_token
+# a = create_TOKEN("admin" , 1)
 print(a)
 # # sleep(2)
 # # decode above token
