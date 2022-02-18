@@ -106,5 +106,5 @@ def get_TTS_MP3():
         return send_file(fileName)
 
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
