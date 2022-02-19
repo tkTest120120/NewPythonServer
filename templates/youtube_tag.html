@@ -1,57 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends './base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{% block header_py %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
-    <style>
-        body {
-            width: 100%;
-            margin: 0 auto;
-        }
+<style>
+    body {
+        width: 100%;
+        margin: 0 auto;
+        background-color: #333;
+    }
 
-        form {
-            width: 20%;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            margin-top: 40px;
-        }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3%;
+    }
 
-        form>textarea {
-            margin-bottom: 20px;
-        }
+    form {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        p {
-            margin: 20px;
-            font-size: 18px;
-        }
+    form textarea {
+        margin-left: 10%;
+        font-size: 18px;
+        padding-left: 10px;
+    }
 
-        div{
-            width: 35%;
-            margin: 0 auto;
-        }
-    </style>
+    form button {
+        transform: translateX(50px);
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+    }
 
-</head>
+    .container div {
+        width: 50%;
+        display: flex;
+        justify-content: end;
+    }
 
-<body>
+    .container div textarea {
+        padding: 0;
+        border: 2 solid black;
+        margin-right: 10%;
+        font-size: 18px;
+        padding-left: 10px;
+    }
+</style>
+{% endblock header_py %}
+
+{% block content %}
+<div class="container">
     <form action="/tag_youtube" method="post">
-        <textarea name="tag_text" rows="8" , cols="60">  </textarea>
+        <textarea name="tag_text" rows="30" , cols="60"></textarea>
         <button type="submit"> Send </button>
     </form>
 
-    <br>
-
     <div>
-        {% if youtube_tag %}
-            <!-- <p> {{ youtube_tag }} </p> -->
-            <textarea rows="30" , cols="60" style="margin: 0 20px;" > {{ youtube_tag }} </textarea>
-        {% endif %}
-    </div>
-</body>
-
-</html>
+        <textarea rows="30" , cols="60">{% if youtube_tag %}{{ youtube_tag }}{% endif %}</textarea></div>
+</div>
+{% endblock content %}

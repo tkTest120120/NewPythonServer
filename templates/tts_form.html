@@ -302,14 +302,12 @@
         } else if (text_TTS.value.length <= 0) {
             alert("Không được bỏ trống");
         } else {
+
             event.preventDefault();
 
             document.querySelector('form').fadeOut(500);
             document.querySelector('.wrapper').classList.add('form-success');
-
-            text_TTS.value = "";
-            text_TTS.innerHTML = "";
-        }
+        }        
     });
 
     text_TTS.addEventListener('input', (e) => {
