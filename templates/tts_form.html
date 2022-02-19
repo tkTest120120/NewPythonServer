@@ -257,9 +257,9 @@
         <h1>Welcome</h1>
 
         <form class="form" action="/api/tts" method="POST">
-            <input type="text" name="token" placeholder="Token" required>
-            <textarea cols="30" rows="3" maxlength="2000" placeholder="Input Text" name="content" required></textarea>
-            <label> 0 / 2000 </label>
+<!--            <input type="text" name="token" placeholder="Token" required>-->
+            <textarea cols="30" rows="3" maxlength="5000" placeholder="Input Text" name="content" required></textarea>
+            <label> 0 / 5000 </label>
 
             <button type="submit" id="login-button">Login</button>
         </form>
@@ -277,6 +277,17 @@
         <li></li>
         <li></li>
     </ul>
+
+    <!-- {% if thu %}
+    <div>
+        <audio controls autoplay >
+            <source
+                src="https://vnno-zn-5-tf-mp3-s1-zmp3.zadn.vn/8e022aad55ecbcb2e5fd/8922617403102115744?authen=exp=1645371491~acl=/8e022aad55ecbcb2e5fd/*~hmac=8766d063b4a7e03643f59ff22e02c07a&fs=MTY0NTE5ODY5MTMxNHx3ZWJWNnwwfDExNS43NC4yMjIdUngMTMw"
+                type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+    </div>
+    {% endif %} -->
 </div>
 
 <script>
@@ -286,21 +297,24 @@
 
 
     document.querySelector("#login-button").click(function (event) {
-        if (token.value.length <= 0 ) {
+        if (token.value.length <= 0) {
             alert("Không được bỏ trống");
-        } else if(text_TTS.value.length <= 0){
+        } else if (text_TTS.value.length <= 0) {
             alert("Không được bỏ trống");
         } else {
             event.preventDefault();
 
             document.querySelector('form').fadeOut(500);
             document.querySelector('.wrapper').classList.add('form-success');
+
+            text_TTS.value = "";
+            text_TTS.innerHTML = "";
         }
     });
 
     text_TTS.addEventListener('input', (e) => {
         const valueIN = String(text_TTS.value)
-        count_Character.innerHTML = `${valueIN.length} / 2000`
+        count_Character.innerHTML = `${valueIN.length} / 5000`
     });
 
 </script>

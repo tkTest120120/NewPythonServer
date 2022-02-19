@@ -129,6 +129,7 @@ import os
 def speak(text):
     path = str(os.getcwd())
     fileName = path + "/private/sound.mp3"
+    # fileName = path + "/web/sound.mp3"
     # print(fileName)
     # print("Trợ Lý ảo:  ", text)
 

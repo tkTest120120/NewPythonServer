@@ -1,6 +1,6 @@
 # pip freeze > requirements.txt export library to file txt
 # https://www.youtube.com/watch?v=rfdNIOYGYVI
-from flask import Flask, render_template , request , send_file
+from flask import Flask, render_template , request , send_file , send_from_directory
 from flask import redirect , url_for
 from time import sleep
 import os
@@ -73,11 +73,11 @@ def get_Input_TTS():
 @app.post("/api/tts")
 def get_TTS_token():
     # token_TTS = request.form.get("token")
-    token_TTS = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTY0NTE5NjgxMywiZXhwIjoxNjQ1MzQ0NDEzLCJ1c2VyX2lkIjoiYWJjIiwiZW1haWwiOiJuYW5jeUBnbWFpbC5jb20ifQ.pMto1n-XbgFTZ5Fvk5hVSOkN-N4ijBxugn5FcxN0an8"
+    # token_TTS = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTY0NTE5NjgxMywiZXhwIjoxNjQ1MzQ0NDEzLCJ1c2VyX2lkIjoiYWJjIiwiZW1haWwiOiJuYW5jeUBnbWFpbC5jb20ifQ.pMto1n-XbgFTZ5Fvk5hVSOkN-N4ijBxugn5FcxN0an8"
 
-    with open(os.getcwd() + "/private/token.txt" , "w+") as f :
-        f.write(token_TTS)
-        f.close()
+    # with open(os.getcwd() + "/private/token.txt" , "w+") as f :
+    #     f.write(token_TTS)
+    #     f.close()
 
     text = request.form.get("content")
     # print(text)
@@ -86,25 +86,30 @@ def get_TTS_token():
 
 @app.get("/api/tts")
 def get_TTS_MP3():
-    token_TTS = ""
+    # token_TTS = ""
 
-    with open(os.getcwd() + "//private/token.txt" , "r") as f :
-        token_TTS = f.read()
-        f.close()
+    # with open(os.getcwd() + "//private/token.txt" , "r") as f :
+    #     token_TTS = f.read()
+    #     f.close()
     # print(f"token_TTS : {token_TTS}")
 
-    decode_Token = decode_verify_TOKEN(token_TTS)
+    # decode_Token = decode_verify_TOKEN(token_TTS)
 
-    if decode_Token == "Token đã hết hạn rồi":
-        return decode_Token
-    elif decode_Token == "Token không hợp lệ":
-        return decode_Token
-    elif decode_Token == "Token ok" :
-        print(f"decode_Token : {decode_Token}")
-        path = str(os.getcwd())
-        fileName = path + "/private/sound.mp3"
-        return send_file(fileName)
+    # if decode_Token == "Token đã hết hạn rồi":
+    #     return decode_Token
+    # elif decode_Token == "Token không hợp lệ":
+    #     return decode_Token
+    # elif decode_Token == "Token ok" :
+    #     print(f"decode_Token : {decode_Token}")
+    #     path = str(os.getcwd())
+    #     fileName = path + "/private/sound.mp3"
+    #
+    #     return send_file(fileName)
+    # Free
+    path = str(os.getcwd())
+    fileName = path + "/private/sound.mp3"
 
+    return send_file(fileName)
 
 if __name__ == '__main__':
     app.run(debug=True)
