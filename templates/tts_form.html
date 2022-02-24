@@ -261,7 +261,7 @@
         <h1>Welcome</h1>
 
         <form class="form" action="/api/tts" method="POST">
-<!--            <input type="text" name="token" placeholder="Token" required>-->
+            <!--            <input type="text" name="token" placeholder="Token" required>-->
             <textarea cols="30" rows="3" maxlength="5000" placeholder="Input Text" name="content" required></textarea>
             <label> 0 / 5000 </label>
 
@@ -311,7 +311,7 @@
 
             document.querySelector('form').fadeOut(500);
             document.querySelector('.wrapper').classList.add('form-success');
-        }        
+        }
     });
 
     text_TTS.addEventListener('input', (e) => {

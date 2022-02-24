@@ -12,9 +12,14 @@
 </head>
 
 <body>
-    <audio src="{{ url_for('test', fileMp3=fileMp3) }}" autoplay controls >
+    <a href="#"> new </a>
 
-    </audio>
+    <script>
+        window.addEventListener('hashchange', function (event) {
+            
+            location.reload();
+        });
+    </script>
 </body>
 
 </html>
