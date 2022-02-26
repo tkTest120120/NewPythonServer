@@ -7,23 +7,23 @@ import os
 from functions.function import get_Link_img , get_Link_Img_from_WEB , lai_Ngan_hang , speak
 from functions.token_jwt import decode_verify_TOKEN
 
-app = Flask(__name__ , static_folder="./web")
+app = Flask(__name__ , static_folder="./web" , static_url_path="")
 
 @app.get("/")
 def index():
     return render_template('index.html' , title = "Home")
+
+@app.get("/getip" )
+def salvador():
+    return request.host
+    # link = get_Link_img("https://www.facebook.com/groups/697332711026460/media/photos")
+    # return link
 
 '''Lấy link ảnh từ Group Facebook'''
 @app.post("/get_link_group")
 def home():
     "https://www.facebook.com/groups/697332711026460/media/photos"
     link = get_Link_Img_from_WEB(request.form.get("url"))
-    return link
-
-
-@app.post("/test" )
-def salvador():
-    link = get_Link_img("https://www.facebook.com/groups/697332711026460/media/photos")
     return link
 
 @app.post("/upload")
