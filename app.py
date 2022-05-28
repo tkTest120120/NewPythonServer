@@ -4,7 +4,7 @@ from flask import Flask, render_template , request , send_file , send_from_direc
 from flask import redirect , url_for
 from time import sleep
 import os
-from functions.function import get_Link_img , get_Link_Img_from_WEB , lai_Ngan_hang , speak
+from functions.function import get_Link_img , get_Link_Img_from_WEB , lai_Ngan_hang , speak, speak_Public_MP3
 from functions.token_jwt import decode_verify_TOKEN
 
 app = Flask(__name__ , static_folder="./web" , static_url_path="")
@@ -110,6 +110,17 @@ def get_TTS_MP3():
     fileName = path + "/private/sound.mp3"
 
     return send_file(fileName)
+
+''' Chuyển văn bản thành giọng nói '''
+@app.post("/api/tts_public")
+def tts_Public():
+    speak_Public_MP3(request.form.get("text"))
+    return "/sound.mp3"
+
+'''test'''
+@app.get("/test")
+def test_UI_Template():
+    return render_template("test.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

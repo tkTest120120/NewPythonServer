@@ -5,7 +5,7 @@ from time import sleep
 secret_key = 'your-256-bit-secret'
 
 def create_TOKEN(nguoi_tao , thoi_han):
-    dt = datetime.now(tz=timezone.utc) + timedelta(seconds=1)
+    dt = datetime.now(tz=timezone.utc) + timedelta(days= thoi_han)
     encoded_token = jwt.encode(
         {"iss": nguoi_tao, "iat": datetime.now(), 'exp': dt, 'user_id': "abc", 'email': "nancy@gmail.com"},
         secret_key, algorithm='HS256')

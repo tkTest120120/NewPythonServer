@@ -12,13 +12,41 @@
 </head>
 
 <body>
-    <a href="#"> new </a>
 
+    <audio controls id="test">
+
+    </audio>
     <script>
-        window.addEventListener('hashchange', function (event) {
-            
-            location.reload();
-        });
+        const audio = document.getElementById('test');
+
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+
+        var urlencoded = new URLSearchParams();
+        urlencoded.append("text", "Pin mới do TS Nguyễn Ngọc Tân phát triển có khả năng kéo dài gấp đôi và giặt được trong máy giặt tới 39 lần mà không ảnh hưởng tới chất lượng.\n\nPin co giãn thường dùng trong quần áo thông minh dành cho người chơi thể thao nhằm ghi lại vận động cơ hoặc trong thiết bị y tế như miếng dán đo nhịp tim, đai giám sát bào thai, thiết bị phân tích mồ hôi dành cho người bị tiểu đường...\n\nCác loại pin hiện tại không giặt được do cảm biến và bo mạch có thể đính kèm vĩnh viễn trên quần áo thông minh, bởi vậy việc thường xuyên phải tháo ra trước khi giặt, gây bất tiện.\n\nNhóm nghiên cứu của TS Nguyễn Ngọc Tân, Đại học British Columbia (Canada) đã chế tạo thành công pin co giãn, khắc phục được những nhược điểm của pin hiện tại.\n\nHọ bắt tay nghiên cứu từ đầu năm 2019, đến tháng 12 cho ra đời mô hình pin đầu tiên. Pin có kích cỡ và dung lượng khác nhau, từ 1mAh (khoảng 1,5 cm2, chiều dày khoảng 1 mm) đến 300 mAh (300 cm2, chiều dày khoảng 1,3 mm). Pin có khả năng kéo giãn đến 100% chiều dài (tức gấp đôi ban đầu) và có thể giặt được trong máy giặt đến 39 lần.\n\nLoại vật liệu được lựa chọn là kẽm và mangan oxide cùng dung dịch muối nồng độ thấp, độ pH trung hòa. Theo TS Tân, hóa chất này an toàn hơn so với thành phần của pin lithium-ion thông thường, tránh tình trạng cháy nổ và không tạo ra hóa chất độc hại nếu có bị vỡ hoặc rò rỉ nên không ảnh hưởng đến sức khỏe người sử dụng. Hỗn hợp được nghiền nhỏ, kết dính bằng một loại polymer có tính co giãn tốt và khả năng giữ dung dịch cao.");
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+        };
+
+        fetch("http://127.0.0.1:5000/api/tts_public", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                // new Audio("http://127.0.0.1:5000" + result).play();
+
+                // audio.style.display = "none";
+                audio.src = "http://127.0.0.1:5000" + result;
+                // audio.play();
+                audio.autoplay = true;
+                // audio.onended = function () {
+                //     audio.remove() //Remove when played.
+                // };
+                // document.body.appendChild(audio);
+            })
+            .catch(error => console.log('error', error));
     </script>
 </body>
 
