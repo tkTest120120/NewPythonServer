@@ -63,11 +63,13 @@
 {% block content %}
 <div class="container">
     <form action="/tag_youtube" method="post">
-        <textarea name="tag_text" rows="30" , cols="60"></textarea>
+        <textarea name="tag_text" rows="30" , cols="60" placeholder="Nhập vào đây nha"></textarea>
         <button type="submit"> Send </button>
     </form>
 
     <div>
-        <textarea rows="30" , cols="60">{% if youtube_tag %}{{ youtube_tag }}{% endif %}</textarea></div>
+        <textarea rows="30" , cols="60" placeholder="Xem kết quả ở đây">{% if youtube_tag %}{{ youtube_tag }}{% endif %}</textarea>
+    </div>
+
 </div>
 {% endblock content %}
