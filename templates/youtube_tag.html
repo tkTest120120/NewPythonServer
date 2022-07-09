@@ -68,8 +68,14 @@
     </form>
 
     <div>
-        <textarea rows="30" , cols="60" placeholder="Xem kết quả ở đây">{% if youtube_tag %}{{ youtube_tag }}{% endif %}</textarea>
+        <textarea id="resultTag" rows="30" , cols="60"
+            placeholder="Xem kết quả ở đây">{% if youtube_tag %}{{ youtube_tag }}{% endif %}</textarea>
     </div>
 
 </div>
+
+<script>
+    const resultTag = document.getElementById("resultTag");
+    navigator.clipboard.writeText(resultTag.innerHTML != "" ? resultTag.innerHTML : "");
+</script>
 {% endblock content %}
