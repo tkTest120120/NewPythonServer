@@ -130,7 +130,7 @@ def google_TTS():
 
     text = json.loads(request.form.get("google_tts_text"))
 
-    with open(path + f"\\web\\output.wav", "wb") as out:
+    with open(path + f"/web/output.wav", "wb") as out:
         # Write the response to the output file.
         out.write(base64.b64decode(text["audioContent"]))
         print('Audio content written to file "output.wav"')
