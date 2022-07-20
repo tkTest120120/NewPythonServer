@@ -127,7 +127,7 @@ def input_google_tts():
 @app.post("/google_tts")
 def google_TTS():
     path = str(os.getcwd())
-    print(path)
+
     text = json.loads(request.form.get("google_tts_text"))
 
     with open(path + f"/web/output.wav", "wb") as out:
