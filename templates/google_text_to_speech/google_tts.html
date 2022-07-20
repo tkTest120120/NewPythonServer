@@ -1,0 +1,87 @@
+{% extends './base.html' %}
+
+{% block header_py %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+<style>
+    body {
+        width: 100%;
+        margin: 0 auto;
+        background-color: #333;
+    }
+
+    .container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 3%;
+    }
+
+    form {
+        width: 50%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    form textarea {
+        margin-left: 10%;
+        font-size: 18px;
+        padding-left: 10px;
+    }
+
+    form button {
+        transform: translateX(50px);
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+    }
+
+    .container div {
+        width: 50%;
+        display: flex;
+        justify-content: end;
+    }
+
+    .container div audio {
+        padding: 0;
+        border: 2 solid black;
+        margin-right: 10%;
+        font-size: 18px;
+        padding-left: 10px;
+    }
+</style>
+{% endblock header_py %}
+
+{% block content %}
+<div class="container">
+    <form action="/google_tts" method="post">
+        <textarea name="google_tts_text" rows="30" , cols="60" placeholder="Nhập vào đây nha"></textarea>
+        <button type="submit"> Send </button>
+    </form>
+
+    <div>
+        <!-- <textarea id="resultTag" rows="30" , cols="60"
+            placeholder="Xem kết quả ở đây">{% if youtube_tag %}{{ youtube_tag }}{% endif %}</textarea> -->
+        {% if outputTTS %}
+        <audio controls autoplay>
+            <source src="http://127.0.0.1:5000/output.wav" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- <script>
+    const resultTag = document.getElementById("resultTag");
+    navigator.clipboard.writeText(resultTag.innerHTML != "" ? resultTag.innerHTML : "");
+</script> -->
+{% endblock content %}

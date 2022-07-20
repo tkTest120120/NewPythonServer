@@ -6,6 +6,8 @@ from time import sleep
 import os
 from functions.function import get_Link_img , get_Link_Img_from_WEB , lai_Ngan_hang , speak, speak_Public_MP3
 from functions.token_jwt import decode_verify_TOKEN
+import json
+import base64
 
 app = Flask(__name__ , static_folder="./web" , static_url_path="")
 
@@ -116,6 +118,26 @@ def get_TTS_MP3():
 def tts_Public():
     speak_Public_MP3(request.form.get("text"))
     return "/sound.mp3"
+
+''' Google text to speech '''
+@app.get("/google_tts")
+def input_google_tts():
+    return render_template("./google_text_to_speech/google_tts.html" , outputTTS = False)
+
+@app.post("/google_tts")
+def google_TTS():
+    path = str(os.getcwd())
+    print(path)
+    text = json.loads(request.form.get("google_tts_text"))
+
+    with open(path + f"\\web\\output.wav", "wb") as out:
+        # Write the response to the output file.
+        out.write(base64.b64decode(text["audioContent"]))
+        print('Audio content written to file "output.wav"')
+        print('Nội dung âm thanh được ghi vào tệp ...')
+        out.close()
+
+    return render_template("./google_text_to_speech/google_tts.html" , outputTTS = True)
 
 '''test'''
 @app.get("/test")
